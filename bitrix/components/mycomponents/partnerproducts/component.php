@@ -16,7 +16,6 @@ global $USER;
 include "change_active.php";
 
 $arResult = array();
-$arResult = array();
 
 if(!$USER->IsAuthorized())
 {
