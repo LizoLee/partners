@@ -35,7 +35,7 @@ if(isset($_POST["activate"]) || isset($_POST["deactivate"]))
 			$productPartner = $product->GetProperty("PARTNER");
 			if($partner = CIBlockElement::GetList(array(), array("ID" => $productPartner["VALUE"]))->GetNextElement())
 			{
-				$partnerOperator = $product->GetProperty("OPERATOR");
+				$partnerOperator = $partner->GetProperty("OPERATOR");
 				if(($USER->GetId()) == $partnerOperator["VALUE"])
 				{
 					$el = new CIBlockElement;
@@ -45,7 +45,7 @@ if(isset($_POST["activate"]) || isset($_POST["deactivate"]))
 				}
 				else
 				{
-					ShowError("Доступ запрещен. У пользователя нет прав на изменение товара.");
+					ShowError("Доступ запрещен. У пользователя нет прав на изменение товара.";
 					return;
 				}
 				unset($partner, $partnerOperator);
