@@ -48,7 +48,7 @@
 						<p><?=substr($product["PREVIEW_TEXT"],0,100)?> ...</p>
 					</td>
 					<td>
-						<form action="<?=$_SERVER['PHP_SELF']?>?partnerId=<?=$partnerId?>" method="post">
+						<form action="<?=$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']."&"?>?partnerId=<?=$partnerId?>" method="post">
 							<input type="hidden" name="productId" value="<?=$product["ID"]?>">
 							<?if($product["ACTIVE"] == "Y") { ?>
 								<span>Активен</span>
