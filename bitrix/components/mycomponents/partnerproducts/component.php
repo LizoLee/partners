@@ -41,14 +41,14 @@ $arSelect = array(
 if($currentUserIsAdmin)
 {
 	$arFilter = array(
-	"IBLOCK_ID" => 5,
+		"IBLOCK_ID" => 5,
 	);
 }
 else
 {
 	$arFilter = array(
-	"IBLOCK_ID" => 5,
-	"PROPERTY_OPERATOR" => $currentUser,
+		"IBLOCK_ID" => 5,
+		"PROPERTY_OPERATOR" => $currentUser,
 	);
 }
 //EXECUTE
@@ -63,7 +63,7 @@ while($partner = $allPartners->GetNext())
 	$intKey++;
 }
 
-if(count($arResult["PARTNER"]) == 0)
+if(0 == count($arResult["PARTNER"]))
 {
 	ShowError("Доступ запрещен. Пользователь не является оператором ни у одного партнера.");
 	return;
@@ -79,7 +79,7 @@ $arSelect = array(
 	"PREVIEW_PICTURE",
 	"PREVIEW_TEXT",
 	"DETAIL_PAGE_URL",
-	);
+);
 foreach($arResult["PARTNER_ID_LIST"] as $partnerIntKey=>$partnerId)
 {
 	//WHERE
@@ -91,10 +91,9 @@ foreach($arResult["PARTNER_ID_LIST"] as $partnerIntKey=>$partnerId)
 	$arNavParams = array(
 		"nPageSize" => 4,
 		"bShowAll" => "Y",
-		);
+	);
 		
 	$partnerProduct = CIBlockElement::GetList(array(), $arFilter, false, $arNavParams, $arSelect);
-	//$partnerProduct = CIBlockElement::GetList(array(), $arFilter, false, false, $arSelect);
 	$partnerProduct->SetUrlTemplates();
 	$intKey=0;
 	while($product = $partnerProduct->GetNext())
@@ -109,7 +108,5 @@ foreach($arResult["PARTNER_ID_LIST"] as $partnerIntKey=>$partnerId)
 	$arResult['NAV_STRING'][$partnerId] = $partnerProduct->GetPageNavStringEx($navComponentObject, '', '', 'Y');
 }
 
-
 $this->includeComponentTemplate();
-
 ?>
