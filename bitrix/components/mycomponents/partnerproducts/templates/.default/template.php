@@ -63,5 +63,5 @@
 			</table>
 		<? } ?>
 	</div>
-<p><?// echo $arResult["NAV_STRING"]; ?></p>
+	<p><? echo $arResult["NAV_STRING"][$partnerId]; ?></p>
 </div>
