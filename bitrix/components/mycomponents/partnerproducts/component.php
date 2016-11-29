@@ -94,8 +94,8 @@ foreach($arResult["PARTNER_ID_LIST"] as $partnerIntKey=>$partnerId)
 		"bShowAll" => "Y",
 		);
 		
-	//$partnerProduct = CIBlockElement::GetList(array(), $arFilter, false, $arNavParams, $arSelect);
-	$partnerProduct = CIBlockElement::GetList(array(), $arFilter, false, false, $arSelect);
+	$partnerProduct = CIBlockElement::GetList(array(), $arFilter, false, $arNavParams, $arSelect);
+	//$partnerProduct = CIBlockElement::GetList(array(), $arFilter, false, false, $arSelect);
 	$partnerProduct->SetUrlTemplates();
 	$intKey=0;
 	while($product = $partnerProduct->GetNext())
@@ -106,10 +106,10 @@ foreach($arResult["PARTNER_ID_LIST"] as $partnerIntKey=>$partnerId)
 		$arResultProductLink[$intKey["ID"]] = &$arResult["PARTNER_PRODUCT"][$partnerId][$intKey];
 		$intKey++;
 	}
+	$arResult["NAV_RESULT"][$partnerId] = $partnerProduct;
+	$arResult['NAV_STRING'][$partnerId] = $partnerProduct->GetPageNavStringEx($navComponentObject, '', '', 'Y');
 }
 
-$arResult["NAV_RESULT"] = $partnerProduct;
-$arResult['NAV_STRING'] = $partnerProduct->GetPageNavStringEx($navComponentObject, '', '', 'Y');
 
 $this->includeComponentTemplate();
 

@@ -45,7 +45,7 @@ if(isset($_POST["activate"]) || isset($_POST["deactivate"]))
 				}
 				else
 				{
-					ShowError("Доступ запрещен. У пользователя нет прав на изменение товара.";
+					ShowError("Доступ запрещен. У пользователя нет прав на изменение товара.");
 					return;
 				}
 				unset($partner, $partnerOperator);
